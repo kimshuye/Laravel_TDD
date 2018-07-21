@@ -26,4 +26,17 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function testPostRoute()
+    {
+        $response = $this->post('post',[
+            'name'=>'Suntisuk',
+            'email'=>'suntisuk.dev@gmail.com'
+        ]);
+
+        $response->assertStatus(200)->assertJson([
+            'name'=>'Suntisuk',
+            'email'=>'suntisuk.dev@gmail.com'
+        ]);
+    }
+
 }
