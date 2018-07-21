@@ -18,4 +18,12 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testOlaMundo()
+    {
+        $response = $this->get('/ola');
+
+        $response->assertStatus(200);
+    }
+
 }
