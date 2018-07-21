@@ -14,6 +14,12 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+        $this->assertTrue(false);
+    }
+    
+    public function testUrl()
+    {
+        $response = $this->call('GET', '/');
+        $this->assertEquals(200, $response->status());
     }
 }
