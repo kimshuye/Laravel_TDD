@@ -14,15 +14,12 @@ class CreateBooksTable extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedInteger('id');
             $table->string('name');
             $table->integer('price');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->reference('id')->onDelete('cascade');
+            $table->unsignedInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users'); // SQLSTATE[HY000]: General error: 1005 Can't create table `memory`.`#sql-34a0_60e` 
             $table->timestamps();
-
-
-
         });
     }
 
@@ -33,6 +30,14 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        
+        Schema::dropIfExists('books'
+            , function (Blueprint $table) {
+                $table->dropForeign(`books_user_id_foreign`);
+                // $table->dropForeign(`books__dropforeign`);
+
+                // $table->dropUnique(`books_user_id_foreign`);
+            }
+        );
     }
 }
