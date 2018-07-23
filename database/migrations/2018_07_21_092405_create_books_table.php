@@ -18,8 +18,9 @@ class CreateBooksTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->unsignedInteger('user_id');
-            // $table->foreign('user_id')->references('id')->on('users'); // SQLSTATE[HY000]: General error: 1005 Can't create table `memory`.`#sql-34a0_60e` 
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // SQLSTATE[HY000]: General error: 1005 Can't create table `memory`.`#sql-34a0_60e` 
+            
         });
     }
 
