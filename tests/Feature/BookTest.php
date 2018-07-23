@@ -11,7 +11,10 @@ class BookTest extends TestCase
 {
     use DatabaseMigrations;
 
-    
+    public function test_books_can_be_created()
+    {
+        // $user = ;
+    }
 
     public function testExample()
     {
