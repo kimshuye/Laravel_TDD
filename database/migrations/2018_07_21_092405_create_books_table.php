@@ -14,11 +14,12 @@ class CreateBooksTable extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->increments('id');
             $table->string('name');
             $table->integer('price');
             $table->unsignedInteger('user_id');
             $table->timestamps();
+            // $table->integer('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // SQLSTATE[HY000]: General error: 1005 Can't create table `memory`.`#sql-34a0_60e`
         });
     }
